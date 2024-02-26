@@ -1,26 +1,26 @@
-import { SessionOptions } from 'express-session';
-import Redis from 'ioredis';
-import config from '.';
+import { SessionOptions } from 'express-session'
+import Redis from 'ioredis'
+import config from '.'
 
-const REDIS_PORT: number = parseInt(config.redis.port || '6379');
+const REDIS_PORT: number = parseInt(config.redis.port || '6379')
 
-import RedisStore from 'connect-redis';
+import RedisStore from 'connect-redis'
 const redisClient = new Redis({
     host: config.redis.host,
     port: REDIS_PORT
-});
+})
 
 redisClient.on('connect', () => {
-    console.log('🚀 [redis]: Redis is connected.');
-});
+    console.log('🚀 [redis]: Redis is connected.')
+})
 
 redisClient.on('error', (error) => {
-    console.log('❌ [redis]: Error connecting to Redis:', error);
-});
+    console.log('❌ [redis]: Error connecting to Redis:', error)
+})
 
 redisClient.on('end', () => {
-    console.log('🚀 [redis]: Redis connection has been closed.');
-});
+    console.log('🚀 [redis]: Redis connection has been closed.')
+})
 
 export const sessionConfig: SessionOptions = {
     store: new RedisStore({ client: redisClient }),
@@ -29,6 +29,6 @@ export const sessionConfig: SessionOptions = {
     saveUninitialized: false,
     cookie: {
         maxAge: 1000 * 60 * 60 * 24,
-        httpOnly: true,
-    },
-};
+        httpOnly: true
+    }
+}

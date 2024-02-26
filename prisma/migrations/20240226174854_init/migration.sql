@@ -17,23 +17,9 @@ CREATE TABLE `User` (
 CREATE TABLE `City` (
     `id` INTEGER NOT NULL AUTO_INCREMENT,
     `name` VARCHAR(191) NOT NULL,
-    `country` VARCHAR(191) NOT NULL,
-    `state` VARCHAR(191) NOT NULL,
     `latitude` DOUBLE NOT NULL,
     `longitude` DOUBLE NOT NULL,
 
-    PRIMARY KEY (`id`)
-) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
-
--- CreateTable
-CREATE TABLE `Weather` (
-    `id` INTEGER NOT NULL AUTO_INCREMENT,
-    `temperature` DOUBLE NOT NULL,
-    `conditions` VARCHAR(191) NOT NULL,
-    `windSpeed` DOUBLE NOT NULL,
-    `cityId` INTEGER NOT NULL,
-
-    UNIQUE INDEX `Weather_cityId_key`(`cityId`),
     PRIMARY KEY (`id`)
 ) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
@@ -55,9 +41,6 @@ CREATE TABLE `WeatherSearch` (
 
     PRIMARY KEY (`id`)
 ) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
-
--- AddForeignKey
-ALTER TABLE `Weather` ADD CONSTRAINT `Weather_cityId_fkey` FOREIGN KEY (`cityId`) REFERENCES `City`(`id`) ON DELETE RESTRICT ON UPDATE CASCADE;
 
 -- AddForeignKey
 ALTER TABLE `FavoriteCity` ADD CONSTRAINT `FavoriteCity_userId_fkey` FOREIGN KEY (`userId`) REFERENCES `User`(`id`) ON DELETE RESTRICT ON UPDATE CASCADE;

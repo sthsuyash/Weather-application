@@ -23,25 +23,12 @@ model User {
 
 // City model represents information about cities
 model City {
-  id        Int             @id @default(autoincrement())
-  name      String
-  country   String
-  state     String
-  latitude  Float
-  longitude Float
-  weather   Weather[]
-  users     FavoriteCity[]
-  searches  WeatherSearch[]
-}
-
-// Weather model represents weather data for a city
-model Weather {
-  id          Int    @id @default(autoincrement())
-  temperature Float
-  conditions  String
-  windSpeed   Float
-  cityId      Int    @unique
-  city        City   @relation(fields: [cityId], references: [id])
+  id          Int             @id @default(autoincrement())
+  name        String
+  latitude    Float
+  longitude   Float
+  users       FavoriteCity[]
+  searches    WeatherSearch[]
 }
 
 // FavoriteCity model represents user's favorite cities
