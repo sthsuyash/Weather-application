@@ -80,8 +80,6 @@ class WeatherService {
                 ? { q: query.q }
                 : { q: `${query.lat},${query.lon}` }
 
-            console.log('Query parameters: ', queryParameters)
-            // Replace the following with the actual weather.com API call
             const response = await axios.get(WEATHER_URL, {
                 params: {
                     q: queryParameters.q,

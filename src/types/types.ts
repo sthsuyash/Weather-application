@@ -49,23 +49,6 @@ interface WeatherApiResponse {
     }
 }
 
-interface WeatherDataResponse {
-    name: string
-    country: string
-    latitude: number
-    longitude: number
-    lastUpdated: string
-    temperatureInCelsius: number
-    temperatureInFahrenheit: number
-    isDayTime: boolean
-    conditionText: string
-    conditionIcon: string
-    conditionCode: number
-    feelsLikeCelsius: number
-    feelsLikeFahrenheit: number
-    humidity: number
-}
-
 interface FavoriteCity {
     id: number
     cityId: number
@@ -76,6 +59,5 @@ export {
     City,
     FavoriteCity,
     RecentSearch,
-    WeatherApiResponse,
-    WeatherDataResponse
+    WeatherApiResponse
 }

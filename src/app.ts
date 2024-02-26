@@ -1,5 +1,5 @@
 import express, { Express } from 'express'
-import session, { SessionOptions } from 'express-session'
+import session from 'express-session'
 import morgan from 'morgan'
 import cookieParser from 'cookie-parser'
 import cors from 'cors'

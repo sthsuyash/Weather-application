@@ -1,0 +1,1458 @@
+{
+	"info": {
+		"_postman_id": "fddcf34d-e5b2-4453-952e-334b685934d7",
+		"name": "Weather application",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "20437995",
+		"_collection_link": "https://sthsuyash.postman.co/workspace/Fatafat~c60238c3-30c9-4d50-80c1-5764635b096c/collection/20437995-fddcf34d-e5b2-4453-952e-334b685934d7?action=share&source=collection_link&creator=20437995"
+	},
+	"item": [
+		{
+			"name": "Users",
+			"item": [
+				{
+					"name": "Register User",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"abcd@gmail.com\",\r\n    \"password\": \"abc@gmail.com\",\r\n    \"country\": \"nepal\",\r\n    \"city\": \"kathmandu\",\r\n    \"state\": \"bagmati\",\r\n    \"latitude\": 120,\r\n    \"longitude\": 120\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/v1/user/register",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"user",
+								"register"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Register User",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"email\": \"user1@gmail.com\",\r\n    \"password\": \"user1@123\",\r\n    \"country\": \"Nepal\",\r\n    \"city\": \"Kathmandu\",\r\n    \"state\": \"Bagmati\",\r\n    \"latitude\": 85.4,\r\n    \"longitude\": 27.67\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/api/v1/user/register",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"v1",
+										"user",
+										"register"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "http://localhost:3001"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "70"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"46-Q3mWB0BSXy+ZlQ4biQvBTvJqhEw\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 26 Feb 2024 19:27:35 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"message\": \"User registered successfully.\",\n    \"data\": null\n}"
+						}
+					]
+				},
+				{
+					"name": "Login User",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"user1@gmail.com\",\r\n    \"password\": \"user1@123\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/v1/user/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"user",
+								"login"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Login User",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"email\": \"user1@gmail.com\",\r\n    \"password\": \"user1@123\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/api/v1/user/login",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"v1",
+										"user",
+										"login"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "http://localhost:3001"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "69"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"45-x9gXDMGnmlBP163gtxXWnBsLZoI\""
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "connect.sid=s%3AR8aaKnUjIrb9ZSLKzH2q5jeL8UsWvkpi.smXDio%2F%2BaAXcwi3i2A0CrTn6keTP8XAmAcm29AhVavk; Path=/; Expires=Tue, 27 Feb 2024 19:28:09 GMT; HttpOnly"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 26 Feb 2024 19:28:09 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"message\": \"User logged in successfully.\",\n    \"data\": null\n}"
+						}
+					]
+				},
+				{
+					"name": "Logout User",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/api/v1/user/logout",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"user",
+								"logout"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Logout User",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3000/api/v1/user/logout",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"v1",
+										"user",
+										"logout"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "http://localhost:3001"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "connect.sid=; Path=/; Expires=Thu, 01 Jan 1970 00:00:00 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "70"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"46-kdJV1mC4LrU34yOJrOLFjfyBMz0\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 26 Feb 2024 19:28:41 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"message\": \"User logged out successfully.\",\n    \"data\": null\n}"
+						}
+					]
+				},
+				{
+					"name": "Get profile",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"abc@gmail.com\",\r\n    \"password\": \"abc@gmail.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/v1/user/profile",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"user",
+								"profile"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get profile",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"email\": \"abc@gmail.com\",\r\n    \"password\": \"abc@gmail.com\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/api/v1/user/profile",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"v1",
+										"user",
+										"profile"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "http://localhost:3001"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "196"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"c4-bKs5aFDp6H44tlrnX4QzBimjwcA\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 26 Feb 2024 19:29:15 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"message\": \"User profile retrieved successfully.\",\n    \"data\": {\n        \"id\": 2,\n        \"email\": \"user1@gmail.com\",\n        \"country\": \"Nepal\",\n        \"state\": \"Bagmati\",\n        \"city\": \"Kathmandu\",\n        \"latitude\": 85.4,\n        \"longitude\": 27.67\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Change password",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"oldPassword\":\"user1@123\",\r\n    \"newPassword\":\"user@123\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/v1/user/password",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"user",
+								"password"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Change password",
+							"originalRequest": {
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"oldPassword\":\"user1@123\",\r\n    \"newPassword\":\"user@123\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/api/v1/user/password",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"v1",
+										"user",
+										"password"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "http://localhost:3001"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "76"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"4c-QlgZN9bfB4gxlaw3b8L4i+FEDlQ\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 26 Feb 2024 19:29:42 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"message\": \"User password updated successfully.\",\n    \"data\": null\n}"
+						}
+					]
+				},
+				{
+					"name": "Update profile",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"state\": \"Gandaki\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/v1/user/profile",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"user",
+								"profile"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Update profile",
+							"originalRequest": {
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"state\": \"Gandaki\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/api/v1/user/profile",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"v1",
+										"user",
+										"profile"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "http://localhost:3001"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "75"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"4b-QQssaMVM1SvtoeOiW4Ofvm8b6s4\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 26 Feb 2024 19:30:23 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"message\": \"User profile updated successfully.\",\n    \"data\": null\n}"
+						}
+					]
+				},
+				{
+					"name": "Delete user profile",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"abc@gmail.com\",\r\n    \"password\": \"abc@gmail.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/v1/user/profile",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"user",
+								"profile"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Delete user profile unauthorized",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"email\": \"abc@gmail.com\",\r\n    \"password\": \"abc@gmail.com\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/api/v1/user/profile",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"v1",
+										"user",
+										"profile"
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "http://localhost:3001"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "42"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"2a-H4CLXoxSRMwDtqUCBiDzMCvYSTQ\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 26 Feb 2024 19:28:50 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": false,\n    \"message\": \"Unauthorized\"\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Weather",
+			"item": [
+				{
+					"name": "Get weather for current user location",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/api/v1/weather",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"weather"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get weather for current user location",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3000/api/v1/weather",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"v1",
+										"weather"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "http://localhost:3001"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "720"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"2d0-KCxzEwmbyXmoqDW7Xr+GkWuiH9s\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 26 Feb 2024 19:31:38 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"message\": \"Weather data retrieved successfully.\",\n    \"data\": {\n        \"location\": {\n            \"name\": \"Kathmandu\",\n            \"region\": \"\",\n            \"country\": \"Nepal\",\n            \"lat\": 27.72,\n            \"lon\": 85.32,\n            \"tz_id\": \"Asia/Kathmandu\",\n            \"localtime_epoch\": 1708975824,\n            \"localtime\": \"2024-02-27 1:15\"\n        },\n        \"current\": {\n            \"last_updated_epoch\": 1708975800,\n            \"last_updated\": \"2024-02-27 01:15\",\n            \"temp_c\": 10,\n            \"temp_f\": 50,\n            \"is_day\": 0,\n            \"condition\": {\n                \"text\": \"Partly cloudy\",\n                \"icon\": \"//cdn.weatherapi.com/weather/64x64/night/116.png\",\n                \"code\": 1003\n            },\n            \"wind_mph\": 3.8,\n            \"wind_kph\": 6.1,\n            \"wind_degree\": 70,\n            \"wind_dir\": \"ENE\",\n            \"pressure_mb\": 1021,\n            \"pressure_in\": 30.15,\n            \"precip_mm\": 0,\n            \"precip_in\": 0,\n            \"humidity\": 66,\n            \"cloud\": 25,\n            \"feelslike_c\": 10.3,\n            \"feelslike_f\": 50.5,\n            \"vis_km\": 8,\n            \"vis_miles\": 4,\n            \"uv\": 1,\n            \"gust_mph\": 4.2,\n            \"gust_kph\": 6.8\n        }\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Get weather using latitude and longitude",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/api/v1/weather/search?lat=27.67&lon=85.40",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"weather",
+								"search"
+							],
+							"query": [
+								{
+									"key": "lat",
+									"value": "27.67"
+								},
+								{
+									"key": "lon",
+									"value": "85.40"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get weather using latitude and longitude",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3000/api/v1/weather/search?lat=27.67&lon=85.40",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"v1",
+										"weather",
+										"search"
+									],
+									"query": [
+										{
+											"key": "lat",
+											"value": "27.67"
+										},
+										{
+											"key": "lon",
+											"value": "85.40"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "http://localhost:3001"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "719"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"2cf-7gNchn//JXqqaJQQgstHLmySWrM\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 26 Feb 2024 19:32:00 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"message\": \"Weather data retrieved successfully.\",\n    \"data\": {\n        \"location\": {\n            \"name\": \"Bhaktapur\",\n            \"region\": \"\",\n            \"country\": \"Nepal\",\n            \"lat\": 27.67,\n            \"lon\": 85.4,\n            \"tz_id\": \"Asia/Kathmandu\",\n            \"localtime_epoch\": 1708975845,\n            \"localtime\": \"2024-02-27 1:15\"\n        },\n        \"current\": {\n            \"last_updated_epoch\": 1708975800,\n            \"last_updated\": \"2024-02-27 01:15\",\n            \"temp_c\": 10,\n            \"temp_f\": 50,\n            \"is_day\": 0,\n            \"condition\": {\n                \"text\": \"Partly cloudy\",\n                \"icon\": \"//cdn.weatherapi.com/weather/64x64/night/116.png\",\n                \"code\": 1003\n            },\n            \"wind_mph\": 3.8,\n            \"wind_kph\": 6.1,\n            \"wind_degree\": 70,\n            \"wind_dir\": \"ENE\",\n            \"pressure_mb\": 1021,\n            \"pressure_in\": 30.15,\n            \"precip_mm\": 0,\n            \"precip_in\": 0,\n            \"humidity\": 66,\n            \"cloud\": 25,\n            \"feelslike_c\": 10.3,\n            \"feelslike_f\": 50.5,\n            \"vis_km\": 8,\n            \"vis_miles\": 4,\n            \"uv\": 1,\n            \"gust_mph\": 4.7,\n            \"gust_kph\": 7.6\n        }\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Get weather using city name",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/api/v1/weather/search?q=Banepa",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"weather",
+								"search"
+							],
+							"query": [
+								{
+									"key": "q",
+									"value": "Banepa"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get weather using city name",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3000/api/v1/weather/search?q=Banepa",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"v1",
+										"weather",
+										"search"
+									],
+									"query": [
+										{
+											"key": "q",
+											"value": "Banepa"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "http://localhost:3001"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "717"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"2cd-dC364fmZzn8LpFaFK766ZrlmZ48\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 26 Feb 2024 19:32:14 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"message\": \"Weather data retrieved successfully.\",\n    \"data\": {\n        \"location\": {\n            \"name\": \"Banepa\",\n            \"region\": \"\",\n            \"country\": \"Nepal\",\n            \"lat\": 27.63,\n            \"lon\": 85.52,\n            \"tz_id\": \"Asia/Kathmandu\",\n            \"localtime_epoch\": 1708975860,\n            \"localtime\": \"2024-02-27 1:16\"\n        },\n        \"current\": {\n            \"last_updated_epoch\": 1708975800,\n            \"last_updated\": \"2024-02-27 01:15\",\n            \"temp_c\": 10,\n            \"temp_f\": 50,\n            \"is_day\": 0,\n            \"condition\": {\n                \"text\": \"Partly cloudy\",\n                \"icon\": \"//cdn.weatherapi.com/weather/64x64/night/116.png\",\n                \"code\": 1003\n            },\n            \"wind_mph\": 3.8,\n            \"wind_kph\": 6.1,\n            \"wind_degree\": 70,\n            \"wind_dir\": \"ENE\",\n            \"pressure_mb\": 1021,\n            \"pressure_in\": 30.15,\n            \"precip_mm\": 0,\n            \"precip_in\": 0,\n            \"humidity\": 66,\n            \"cloud\": 25,\n            \"feelslike_c\": 10.3,\n            \"feelslike_f\": 50.5,\n            \"vis_km\": 8,\n            \"vis_miles\": 4,\n            \"uv\": 1,\n            \"gust_mph\": 4.7,\n            \"gust_kph\": 7.6\n        }\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Get favorite cities of user",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/api/v1/weather/favorites",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"weather",
+								"favorites"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get favorite cities of user",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3000/api/v1/weather/favorites",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"v1",
+										"weather",
+										"favorites"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "http://localhost:3001"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "159"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"9f-MS3Kx86s0I9NJVXeD5Y3Xqyxn9c\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 26 Feb 2024 19:32:48 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"message\": \"Favorite cities retrieved successfully.\",\n    \"data\": [\n        {\n            \"id\": 2,\n            \"cityId\": 1,\n            \"city\": {\n                \"name\": \"Bhaktapur\",\n                \"latitude\": 27.67,\n                \"longitude\": 85.4\n            }\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "Add to favorite cities of user",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Bhaktapur\",\r\n    \"latitude\": \"27.67\",\r\n    \"longitude\": \"85.4\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/v1/weather/favorites",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"weather",
+								"favorites"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Add to favorite cities of user",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"Bhaktapur\",\r\n    \"latitude\": \"27.67\",\r\n    \"longitude\": \"85.4\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/api/v1/weather/favorites",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"v1",
+										"weather",
+										"favorites"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "http://localhost:3001"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "78"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"4e-r6F8GP8RmMlXNDwW8E9LQC8Row0\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 26 Feb 2024 19:32:35 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"message\": \"City added to favorites successfully.\",\n    \"data\": null\n}"
+						}
+					]
+				},
+				{
+					"name": "Get 5 recent searched cities of user",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/api/v1/weather/recent",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"weather",
+								"recent"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get 5 recent searched cities of user",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3000/api/v1/weather/recent",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"v1",
+										"weather",
+										"recent"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "http://localhost:3001"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "231"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"e7-mKJ6MWdjDIwNu/FEb+eYxmk9kvA\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 26 Feb 2024 19:32:59 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"message\": \"Recent searches retrieved successfully.\",\n    \"data\": [\n        {\n            \"id\": 4,\n            \"cityId\": 3,\n            \"city\": {\n                \"name\": \"Banepa\",\n                \"latitude\": 0,\n                \"longitude\": 0\n            }\n        },\n        {\n            \"id\": 3,\n            \"cityId\": 1,\n            \"city\": {\n                \"name\": \"Bhaktapur\",\n                \"latitude\": 27.67,\n                \"longitude\": 85.4\n            }\n        }\n    ]\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Api Home",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/api/v1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"v1"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Api Home",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/api/v1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "http://localhost:3001"
+						},
+						{
+							"key": "Vary",
+							"value": "Origin"
+						},
+						{
+							"key": "Access-Control-Allow-Credentials",
+							"value": "true"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "69"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"45-N2zG182hUUDwO+SYyv1wkQYgH00\""
+						},
+						{
+							"key": "Date",
+							"value": "Mon, 26 Feb 2024 19:31:02 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"success\": true,\n    \"message\": \"Welcome to Weather API v1.0.\",\n    \"data\": null\n}"
+				}
+			]
+		}
+	]
+}
