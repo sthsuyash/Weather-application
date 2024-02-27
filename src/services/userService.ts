@@ -28,7 +28,6 @@ class UserService {
 
         const hashedPassword = await bcrypt.hash(password, 10)
 
-        // Save the user data to the database
         await prisma.user.create({
             data: {
                 email,
@@ -47,7 +46,8 @@ class UserService {
      *
      * @param {object} userData - User data including email and password.
      * @returns {Promise<User>} - A promise that resolves with the logged-in user's information.
-     * @throws {Error} - Throws an error if the user is not found or if the password is incorrect.
+     * @throws {Error} - Throws an error if the user is not found.
+     * @throws {Error} - Throws an error if the password is incorrect.
      */
     async loginUser(userData: any): Promise<User> {
         const { email, password } = userData
@@ -73,13 +73,13 @@ class UserService {
     }
 
     /**
-     * Get a user by their ID.
+     * Retrieves a user by their ID.
      *
      * @param {number} userId - The ID of the user to retrieve.
      * @returns {Promise<User | null>} - A promise that resolves with the user's information, or null if the user is not found.
      * @throws {Error} - Throws an error if the user is not found.
      */
-    async getUserById(userId: number): Promise<User | null> {
+    async getUserProfile(userId: number): Promise<User | null> {
         const user = await prisma.user.findUnique({
             where: { id: userId }
         })
@@ -94,7 +94,7 @@ class UserService {
     }
 
     /**
-     * Update all except the password of a user by their ID.
+     * Updates all except the password of a user by their ID.
      *
      * @param {number} userId - The ID of the user to update.
      * @param {object} userData - The updated user data.
@@ -128,13 +128,14 @@ class UserService {
     }
 
     /**
-     * Update the password of a user by their ID.
+     * Updates the password of a user by their ID.
      *
      * @param {number} userId - The ID of the user to update.
      * @param {string} oldPassword - The old password.
      * @param {string} newPassword - The new password.
      * @returns {Promise<void>} - A promise that resolves once the password is successfully updated.
      * @throws {Error} - Throws an error if the user is not found.
+     * @throws {Error} - Throws an error if the old password is incorrect.
      */
     async updateUserPassword(
         userId: number,
@@ -168,7 +169,7 @@ class UserService {
     }
 
     /**
-     * Delete a user by their ID.
+     * Deletes a user by their ID.
      *
      * @param {number} userId - The ID of the user to delete.
      * @returns {Promise<void>} - A promise that resolves once the user is successfully deleted.

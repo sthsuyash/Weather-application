@@ -3,13 +3,11 @@ import userService from '../services/userService'
 import ApiResponse from '../../utils/response'
 
 /**
- * Route for user registration.
+ * Registers a new user.
  *
  * @param {Request} req - Express request object.
  * @param {Response} res - Express response object.
- * @returns {Promise<void>}
- *
- * @throws {Error} - Throws an error if there is an error registering the user.
+ * @returns {Promise<void>} - A promise that resolves once the user is registered.
  */
 export const registerUser = async (
     req: Request,
@@ -27,13 +25,11 @@ export const registerUser = async (
 }
 
 /**
- * Route for user login.
+ * Logs in the user and creates a session with the user's ID
  *
  * @param {Request} req - Express request object.
  * @param {Response} res - Express response object.
- * @returns {Promise<void>}
- *
- * @throws {Error} - Throws an error if the user is not found.
+ * @returns {Promise<void>} - A promise that resolves once the user is logged in.
  */
 export const loginUser = async (req: Request, res: Response): Promise<void> => {
     try {
@@ -49,13 +45,11 @@ export const loginUser = async (req: Request, res: Response): Promise<void> => {
 }
 
 /**
- * Route for user logout.
+ * Logs out the user and destroys the session.
  *
  * @param {Request} req - Express request object.
  * @param {Response} res - Express response object.
- * @returns {Promise<void>}
- *
- * @throws {Error} - Throws an error if there is an error destroying the session.
+ * @returns {Promise<void>} - A promise that resolves once the user is logged out.
  */
 export const logoutUser = async (
     req: Request,
@@ -83,21 +77,19 @@ export const logoutUser = async (
 }
 
 /**
- * Route for retrieving user profile.
+ * Retrieves user profile based on session userId.
  *
  * @param {Request} req - Express request object.
  * @param {Response} res - Express response object.
- * @returns {Promise<void>}
- *
- * @throws {Error} - Throws an error if the user is not found.
+ * @returns {Promise<void>} - A promise that resolves with the user's profile information.
  */
 export const getUserProfile = async (
     req: Request,
     res: Response
 ): Promise<void> => {
     try {
-        const userId = req.session.userId as number
-        const user = await userService.getUserById(userId)
+        const userId = req.session.userId ?? 0
+        const user = await userService.getUserProfile(userId)
 
         res.json(
             ApiResponse.success<any>(
@@ -112,20 +104,18 @@ export const getUserProfile = async (
 }
 
 /**
- * Route for updating user profile.
+ * Updates user profile based on session userId.
  *
  * @param {Request} req - Express request object.
  * @param {Response} res - Express response object.
- * @returns {Promise<void>}
- *
- * @throws {Error} - Throws an error if there is an error updating the user profile.
+ * @returns {Promise<void>} - A promise that resolves once the user profile is updated.
  */
 export const updateUserProfile = async (
     req: Request,
     res: Response
 ): Promise<void> => {
     try {
-        const userId = req.session.userId as number
+        const userId = req.session.userId ?? 0
         await userService.updateUserProfile(userId, req.body)
 
         res.json(
@@ -141,20 +131,18 @@ export const updateUserProfile = async (
 }
 
 /**
- * Route for updating user password.
+ * Updates user password if authorized.
  *
  * @param {Request} req - Express request object.
  * @param {Response} res - Express response object.
- * @returns {Promise<void>}
- *
- * @throws {Error} - Throws an error if there is an error updating the user password.
+ * @returns {Promise<void>} - A promise that resolves once the user password is updated.
  */
 export const updateUserPassword = async (
     req: Request,
     res: Response
 ): Promise<void> => {
     try {
-        const userId = req.session.userId as number
+        const userId = req.session.userId ?? 0
         const { oldPassword, newPassword } = req.body
         await userService.updateUserPassword(userId, oldPassword, newPassword)
 
@@ -171,22 +159,19 @@ export const updateUserPassword = async (
 }
 
 /**
- * Route for deleting user profile.
+ * Deletes user profile if authorized.
  *
  * @param {Request} req - Express request object.
  * @param {Response} res - Express response object.
- * @returns {Promise<void>}
- *
- * @throws {Error} - Throws an error if there is an error deleting the user profile.
+ * @returns {Promise<void>} - A promise that resolves once the user profile is deleted.
  */
 export const deleteUserProfile = async (
     req: Request,
     res: Response
 ): Promise<void> => {
     try {
-        const userId = req.session.userId as number
+        const userId = req.session.userId ?? 0
 
-        // clear the session and cookie
         req.session.destroy((error) => {
             if (error) {
                 console.error('Error destroying session:', error)

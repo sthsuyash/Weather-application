@@ -20,7 +20,7 @@ export const registrationSchema: ObjectSchema = Joi.object({
     longitude: Joi.number()
         .required()
         .description('User longitude coordinates.')
-}).options({ abortEarly: false, convert: false })
+}).options({ abortEarly: true, convert: false })
 
 /**
  * @description Joi schema for validating user login data.
@@ -33,7 +33,7 @@ export const loginSchema: ObjectSchema = Joi.object({
         .required()
         .description('User email address for login.'),
     password: Joi.string().required().description('User password for login.')
-}).options({ abortEarly: false, convert: false })
+}).options({ abortEarly: true, convert: false })
 
 /**
  * @description Joi schema for validating user profile update data.
@@ -48,7 +48,7 @@ export const editProfileSchema: ObjectSchema = Joi.object({
     latitude: Joi.number().description('User latitude coordinates.'),
     longitude: Joi.number().description('User longitude coordinates.')
 })
-    .options({ abortEarly: false, convert: false })
+    .options({ abortEarly: true, convert: false })
     .optional()
 
 /**
@@ -65,4 +65,4 @@ export const updatePasswordSchema: ObjectSchema = Joi.object({
         .min(8)
         .required()
         .description('User new password (at least 8 characters).')
-}).options({ abortEarly: false, convert: false })
+}).options({ abortEarly: true, convert: false })
