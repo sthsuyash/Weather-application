@@ -97,9 +97,7 @@ class WeatherService {
 
             if (addToRecentSearch) {
                 let city
-                const queryWhereClause = query.q
-                    ? { name: query.q }
-                    : { latitude: query.lat, longitude: query.lon }
+                const queryWhereClause = { name: response.data.location.name }
 
                 // Find the city
                 city = await prisma.city.findFirst({
