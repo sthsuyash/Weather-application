@@ -4,7 +4,7 @@
 		"name": "Weather application",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "20437995",
-		"_collection_link": "https://sthsuyash.postman.co/workspace/Fatafat~c60238c3-30c9-4d50-80c1-5764635b096c/collection/20437995-fddcf34d-e5b2-4453-952e-334b685934d7?action=share&source=collection_link&creator=20437995"
+		"_collection_link": "https://sthsuyash.postman.co/workspace/c60238c3-30c9-4d50-80c1-5764635b096c/collection/20437995-fddcf34d-e5b2-4453-952e-334b685934d7?action=share&source=collection_link&creator=20437995"
 	},
 	"item": [
 		{
@@ -17,7 +17,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"email\": \"abcd@gmail.com\",\r\n    \"password\": \"abc@gmail.com\",\r\n    \"country\": \"nepal\",\r\n    \"city\": \"kathmandu\",\r\n    \"state\": \"bagmati\",\r\n    \"latitude\": 120,\r\n    \"longitude\": 120\r\n}",
+							"raw": "{\r\n    \"email\": \"user1@gmail.com\",\r\n    \"password\": \"user1@123\",\r\n    \"country\": \"nepal\",\r\n    \"city\": \"kathmandu\",\r\n    \"state\": \"bagmati\",\r\n    \"latitude\": 27.72,\r\n    \"longitude\": 85.32\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -47,7 +47,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n    \"email\": \"user1@gmail.com\",\r\n    \"password\": \"user1@123\",\r\n    \"country\": \"Nepal\",\r\n    \"city\": \"Kathmandu\",\r\n    \"state\": \"Bagmati\",\r\n    \"latitude\": 85.4,\r\n    \"longitude\": 27.67\r\n}",
+									"raw": "{\r\n    \"email\": \"user1@gmail.com\",\r\n    \"password\": \"user1@123\",\r\n    \"country\": \"nepal\",\r\n    \"city\": \"kathmandu\",\r\n    \"state\": \"bagmati\",\r\n    \"latitude\": 27.72,\r\n    \"longitude\": 85.32\r\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -103,7 +103,7 @@
 								},
 								{
 									"key": "Date",
-									"value": "Mon, 26 Feb 2024 19:27:35 GMT"
+									"value": "Tue, 27 Feb 2024 16:27:40 GMT"
 								},
 								{
 									"key": "Connection",
@@ -116,6 +116,83 @@
 							],
 							"cookie": [],
 							"body": "{\n    \"success\": true,\n    \"message\": \"User registered successfully.\",\n    \"data\": null\n}"
+						},
+						{
+							"name": "Register User with already set email",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"email\": \"user1@gmail.com\",\r\n    \"password\": \"user1@123\",\r\n    \"country\": \"nepal\",\r\n    \"city\": \"kathmandu\",\r\n    \"state\": \"bagmati\",\r\n    \"latitude\": 27.72,\r\n    \"longitude\": 85.32\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/api/v1/user/register",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"v1",
+										"user",
+										"register"
+									]
+								}
+							},
+							"status": "Internal Server Error",
+							"code": 500,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "http://localhost:3001"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "77"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"4d-UlBGIWikH5LHU+xq8X0rVolpcow\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 27 Feb 2024 16:27:56 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": false,\n    \"message\": \"Email already exists. Choose a different email.\"\n}"
 						}
 					]
 				},
@@ -229,6 +306,160 @@
 							],
 							"cookie": [],
 							"body": "{\n    \"success\": true,\n    \"message\": \"User logged in successfully.\",\n    \"data\": null\n}"
+						},
+						{
+							"name": "Login User with wrong password",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"email\": \"user1@gmail.com\",\r\n    \"password\": \"user@123\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/api/v1/user/login",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"v1",
+										"user",
+										"login"
+									]
+								}
+							},
+							"status": "Internal Server Error",
+							"code": 500,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "http://localhost:3001"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "80"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"50-dQG9nw5RVTk/iHiMoMPENYutPK8\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 27 Feb 2024 16:28:30 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": false,\n    \"message\": \"Incorrect password. Please check your credentials.\"\n}"
+						},
+						{
+							"name": "Login User with unregistered email",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"email\": \"user@gmail.com\",\r\n    \"password\": \"user1@123\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/api/v1/user/login",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"v1",
+										"user",
+										"login"
+									]
+								}
+							},
+							"status": "Internal Server Error",
+							"code": 500,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "http://localhost:3001"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "76"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"4c-1KUlFl8xa97q9xjlleKvdgot5ng\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 27 Feb 2024 16:28:50 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": false,\n    \"message\": \"User not found. Please check your credentials.\"\n}"
 						}
 					]
 				},
@@ -324,6 +555,74 @@
 							],
 							"cookie": [],
 							"body": "{\n    \"success\": true,\n    \"message\": \"User logged out successfully.\",\n    \"data\": null\n}"
+						},
+						{
+							"name": "Logout User without login",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3000/api/v1/user/logout",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"v1",
+										"user",
+										"logout"
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "http://localhost:3001"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "42"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"2a-H4CLXoxSRMwDtqUCBiDzMCvYSTQ\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 27 Feb 2024 16:40:53 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": false,\n    \"message\": \"Unauthorized\"\n}"
 						}
 					]
 				},
@@ -415,15 +714,15 @@
 								},
 								{
 									"key": "Content-Length",
-									"value": "196"
+									"value": "197"
 								},
 								{
 									"key": "ETag",
-									"value": "W/\"c4-bKs5aFDp6H44tlrnX4QzBimjwcA\""
+									"value": "W/\"c5-PaQQPOse37bOlx6KavhS7swcKpA\""
 								},
 								{
 									"key": "Date",
-									"value": "Mon, 26 Feb 2024 19:29:15 GMT"
+									"value": "Tue, 27 Feb 2024 16:29:58 GMT"
 								},
 								{
 									"key": "Connection",
@@ -435,7 +734,84 @@
 								}
 							],
 							"cookie": [],
-							"body": "{\n    \"success\": true,\n    \"message\": \"User profile retrieved successfully.\",\n    \"data\": {\n        \"id\": 2,\n        \"email\": \"user1@gmail.com\",\n        \"country\": \"Nepal\",\n        \"state\": \"Bagmati\",\n        \"city\": \"Kathmandu\",\n        \"latitude\": 85.4,\n        \"longitude\": 27.67\n    }\n}"
+							"body": "{\n    \"success\": true,\n    \"message\": \"User profile retrieved successfully.\",\n    \"data\": {\n        \"id\": 1,\n        \"email\": \"user1@gmail.com\",\n        \"country\": \"nepal\",\n        \"state\": \"bagmati\",\n        \"city\": \"kathmandu\",\n        \"latitude\": 27.72,\n        \"longitude\": 85.32\n    }\n}"
+						},
+						{
+							"name": "Get profile without login",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"email\": \"abc@gmail.com\",\r\n    \"password\": \"abc@gmail.com\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/api/v1/user/profile",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"v1",
+										"user",
+										"profile"
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "http://localhost:3001"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "42"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"2a-H4CLXoxSRMwDtqUCBiDzMCvYSTQ\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 27 Feb 2024 16:40:38 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": false,\n    \"message\": \"Unauthorized\"\n}"
 						}
 					]
 				},
@@ -446,7 +822,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"oldPassword\":\"user1@123\",\r\n    \"newPassword\":\"user@123\"\r\n}",
+							"raw": "{\r\n    \"oldPassword\":\"user@123\",\r\n    \"newPassword\":\"user@123\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -545,6 +921,83 @@
 							],
 							"cookie": [],
 							"body": "{\n    \"success\": true,\n    \"message\": \"User password updated successfully.\",\n    \"data\": null\n}"
+						},
+						{
+							"name": "Change password without login",
+							"originalRequest": {
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"oldPassword\":\"user@123\",\r\n    \"newPassword\":\"user@123\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/api/v1/user/password",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"v1",
+										"user",
+										"password"
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "http://localhost:3001"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "42"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"2a-H4CLXoxSRMwDtqUCBiDzMCvYSTQ\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 27 Feb 2024 16:41:19 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": false,\n    \"message\": \"Unauthorized\"\n}"
 						}
 					]
 				},
@@ -555,7 +1008,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"state\": \"Gandaki\"\r\n}",
+							"raw": "{\r\n    \"state\": \"Gandakiss\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -654,6 +1107,83 @@
 							],
 							"cookie": [],
 							"body": "{\n    \"success\": true,\n    \"message\": \"User profile updated successfully.\",\n    \"data\": null\n}"
+						},
+						{
+							"name": "Update profile without login",
+							"originalRequest": {
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"state\": \"Gandakiss\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/api/v1/user/profile",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"v1",
+										"user",
+										"profile"
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "http://localhost:3001"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "42"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"2a-H4CLXoxSRMwDtqUCBiDzMCvYSTQ\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 27 Feb 2024 16:41:42 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": false,\n    \"message\": \"Unauthorized\"\n}"
 						}
 					]
 				},
@@ -763,10 +1293,88 @@
 							],
 							"cookie": [],
 							"body": "{\n    \"success\": false,\n    \"message\": \"Unauthorized\"\n}"
+						},
+						{
+							"name": "Delete user profile success",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"email\": \"abc@gmail.com\",\r\n    \"password\": \"abc@gmail.com\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/api/v1/user/profile",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"v1",
+										"user",
+										"profile"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "http://localhost:3001"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "75"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"4b-4mZ6zCz++Keq0U41jopQgpuSzuM\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 27 Feb 2024 16:30:35 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"message\": \"User profile deleted successfully.\",\n    \"data\": null\n}"
 						}
 					]
 				}
-			]
+			],
+			"description": "This folder contains all the APIs regarding users.\n\n- Register User\n    \n- Login User\n    \n- Logout User\n    \n- Get profile of authorized user\n    \n- Change password for authorized user\n    \n- Update profile of authorized user\n    \n- Delete the authorized user's profile"
 		},
 		{
 			"name": "Weather",
@@ -866,7 +1474,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:3000/api/v1/weather/search?lat=27.67&lon=85.40",
+							"raw": "http://localhost:3000/api/v1/weather/search?lat=27.67&lon=85.5",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -885,7 +1493,7 @@
 								},
 								{
 									"key": "lon",
-									"value": "85.40"
+									"value": "85.5"
 								}
 							]
 						}
@@ -1071,37 +1679,14 @@
 							],
 							"cookie": [],
 							"body": "{\n    \"success\": true,\n    \"message\": \"Weather data retrieved successfully.\",\n    \"data\": {\n        \"location\": {\n            \"name\": \"Banepa\",\n            \"region\": \"\",\n            \"country\": \"Nepal\",\n            \"lat\": 27.63,\n            \"lon\": 85.52,\n            \"tz_id\": \"Asia/Kathmandu\",\n            \"localtime_epoch\": 1708975860,\n            \"localtime\": \"2024-02-27 1:16\"\n        },\n        \"current\": {\n            \"last_updated_epoch\": 1708975800,\n            \"last_updated\": \"2024-02-27 01:15\",\n            \"temp_c\": 10,\n            \"temp_f\": 50,\n            \"is_day\": 0,\n            \"condition\": {\n                \"text\": \"Partly cloudy\",\n                \"icon\": \"//cdn.weatherapi.com/weather/64x64/night/116.png\",\n                \"code\": 1003\n            },\n            \"wind_mph\": 3.8,\n            \"wind_kph\": 6.1,\n            \"wind_degree\": 70,\n            \"wind_dir\": \"ENE\",\n            \"pressure_mb\": 1021,\n            \"pressure_in\": 30.15,\n            \"precip_mm\": 0,\n            \"precip_in\": 0,\n            \"humidity\": 66,\n            \"cloud\": 25,\n            \"feelslike_c\": 10.3,\n            \"feelslike_f\": 50.5,\n            \"vis_km\": 8,\n            \"vis_miles\": 4,\n            \"uv\": 1,\n            \"gust_mph\": 4.7,\n            \"gust_kph\": 7.6\n        }\n    }\n}"
-						}
-					]
-				},
-				{
-					"name": "Get favorite cities of user",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "http://localhost:3000/api/v1/weather/favorites",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "3000",
-							"path": [
-								"api",
-								"v1",
-								"weather",
-								"favorites"
-							]
-						}
-					},
-					"response": [
+						},
 						{
-							"name": "Get favorite cities of user",
+							"name": "Error searching wrong name of city",
 							"originalRequest": {
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "http://localhost:3000/api/v1/weather/favorites",
+									"raw": "http://localhost:3000/api/v1/weather/search?q=Dolakhaa",
 									"protocol": "http",
 									"host": [
 										"localhost"
@@ -1111,12 +1696,18 @@
 										"api",
 										"v1",
 										"weather",
-										"favorites"
+										"search"
+									],
+									"query": [
+										{
+											"key": "q",
+											"value": "Dolakhaa"
+										}
 									]
 								}
 							},
-							"status": "OK",
-							"code": 200,
+							"status": "Internal Server Error",
+							"code": 500,
 							"_postman_previewlanguage": "json",
 							"header": [
 								{
@@ -1141,15 +1732,15 @@
 								},
 								{
 									"key": "Content-Length",
-									"value": "159"
+									"value": "98"
 								},
 								{
 									"key": "ETag",
-									"value": "W/\"9f-MS3Kx86s0I9NJVXeD5Y3Xqyxn9c\""
+									"value": "W/\"62-8iaHDvx7KlysIe++4GwS8Z5P5h4\""
 								},
 								{
 									"key": "Date",
-									"value": "Mon, 26 Feb 2024 19:32:48 GMT"
+									"value": "Tue, 27 Feb 2024 16:50:05 GMT"
 								},
 								{
 									"key": "Connection",
@@ -1161,7 +1752,7 @@
 								}
 							],
 							"cookie": [],
-							"body": "{\n    \"success\": true,\n    \"message\": \"Favorite cities retrieved successfully.\",\n    \"data\": [\n        {\n            \"id\": 2,\n            \"cityId\": 1,\n            \"city\": {\n                \"name\": \"Bhaktapur\",\n                \"latitude\": 27.67,\n                \"longitude\": 85.4\n            }\n        }\n    ]\n}"
+							"body": "{\n    \"success\": false,\n    \"message\": \"Error searching weather data.\",\n    \"data\": \"Error searching weather data.\"\n}"
 						}
 					]
 				},
@@ -1172,7 +1763,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"name\": \"Bhaktapur\",\r\n    \"latitude\": \"27.67\",\r\n    \"longitude\": \"85.4\"\r\n}",
+							"raw": "{\r\n    \"name\": \"Bhaktapur\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1271,6 +1862,333 @@
 							],
 							"cookie": [],
 							"body": "{\n    \"success\": true,\n    \"message\": \"City added to favorites successfully.\",\n    \"data\": null\n}"
+						},
+						{
+							"name": "Error adding to favorite cities of user if adding the city again",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"Dolakha\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/api/v1/weather/favorites",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"v1",
+										"weather",
+										"favorites"
+									]
+								}
+							},
+							"status": "Internal Server Error",
+							"code": 500,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "http://localhost:3001"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "95"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"5f-mZVsAISsPckPPDeoZv/TT9B+57I\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 27 Feb 2024 16:52:30 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": false,\n    \"message\": \"Error adding city to favorites: City already exists in favorites.\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Get favorite cities of user",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/api/v1/weather/favorites",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"weather",
+								"favorites"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get favorite cities of user",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3000/api/v1/weather/favorites",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"v1",
+										"weather",
+										"favorites"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "http://localhost:3001"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "321"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"141-Fyr6U0tyDKh+NpURIh9TXmWLirg\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 27 Feb 2024 16:54:06 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"message\": \"Favorite cities retrieved successfully.\",\n    \"data\": [\n        {\n            \"id\": 1,\n            \"cityId\": 4,\n            \"city\": {\n                \"name\": \"Dolakha\",\n                \"latitude\": 27.68,\n                \"longitude\": 86.07\n            }\n        },\n        {\n            \"id\": 2,\n            \"cityId\": 1,\n            \"city\": {\n                \"name\": \"Bhaktapur\",\n                \"latitude\": 27.67,\n                \"longitude\": 85.4\n            }\n        },\n        {\n            \"id\": 3,\n            \"cityId\": 5,\n            \"city\": {\n                \"name\": \"Syangja\",\n                \"latitude\": 28.08,\n                \"longitude\": 83.87\n            }\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "Get weather of favorite cities of user",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/api/v1/weather/favorites-weather",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"weather",
+								"favorites-weather"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get favorite cities of user",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3000/api/v1/weather/favorites",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"v1",
+										"weather",
+										"favorites"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "http://localhost:3001"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "159"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"9f-MS3Kx86s0I9NJVXeD5Y3Xqyxn9c\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 26 Feb 2024 19:32:48 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"message\": \"Favorite cities retrieved successfully.\",\n    \"data\": [\n        {\n            \"id\": 2,\n            \"cityId\": 1,\n            \"city\": {\n                \"name\": \"Bhaktapur\",\n                \"latitude\": 27.67,\n                \"longitude\": 85.4\n            }\n        }\n    ]\n}"
+						},
+						{
+							"name": "Get weather of favorite cities of user",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3000/api/v1/weather/favorites-weather",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"v1",
+										"weather",
+										"favorites-weather"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "http://localhost:3001"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "2034"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"7f2-N8vTvodQ0ZvjyN+OJl0MkNrIhQY\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 27 Feb 2024 16:54:19 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"message\": \"Favorite cities weather retrieved successfully.\",\n    \"data\": [\n        {\n            \"location\": {\n                \"name\": \"Dolakha\",\n                \"region\": \"\",\n                \"country\": \"Nepal\",\n                \"lat\": 27.68,\n                \"lon\": 86.07,\n                \"tz_id\": \"Asia/Kathmandu\",\n                \"localtime_epoch\": 1709052858,\n                \"localtime\": \"2024-02-27 22:39\"\n            },\n            \"current\": {\n                \"last_updated_epoch\": 1709052300,\n                \"last_updated\": \"2024-02-27 22:30\",\n                \"temp_c\": 11,\n                \"temp_f\": 51.8,\n                \"is_day\": 0,\n                \"condition\": {\n                    \"text\": \"Partly cloudy\",\n                    \"icon\": \"//cdn.weatherapi.com/weather/64x64/night/116.png\",\n                    \"code\": 1003\n                },\n                \"wind_mph\": 2.2,\n                \"wind_kph\": 3.6,\n                \"wind_degree\": 31,\n                \"wind_dir\": \"NNE\",\n                \"pressure_mb\": 1019,\n                \"pressure_in\": 30.09,\n                \"precip_mm\": 0,\n                \"precip_in\": 0,\n                \"humidity\": 58,\n                \"cloud\": 25,\n                \"feelslike_c\": 9.8,\n                \"feelslike_f\": 49.7,\n                \"vis_km\": 8,\n                \"vis_miles\": 4,\n                \"uv\": 1,\n                \"gust_mph\": 13.2,\n                \"gust_kph\": 21.2\n            }\n        },\n        {\n            \"location\": {\n                \"name\": \"Bhaktapur\",\n                \"region\": \"\",\n                \"country\": \"Nepal\",\n                \"lat\": 27.67,\n                \"lon\": 85.42,\n                \"tz_id\": \"Asia/Kathmandu\",\n                \"localtime_epoch\": 1709052616,\n                \"localtime\": \"2024-02-27 22:35\"\n            },\n            \"current\": {\n                \"last_updated_epoch\": 1709052300,\n                \"last_updated\": \"2024-02-27 22:30\",\n                \"temp_c\": 11,\n                \"temp_f\": 51.8,\n                \"is_day\": 0,\n                \"condition\": {\n                    \"text\": \"Partly cloudy\",\n                    \"icon\": \"//cdn.weatherapi.com/weather/64x64/night/116.png\",\n                    \"code\": 1003\n                },\n                \"wind_mph\": 2.2,\n                \"wind_kph\": 3.6,\n                \"wind_degree\": 343,\n                \"wind_dir\": \"NNW\",\n                \"pressure_mb\": 1019,\n                \"pressure_in\": 30.09,\n                \"precip_mm\": 0,\n                \"precip_in\": 0,\n                \"humidity\": 58,\n                \"cloud\": 25,\n                \"feelslike_c\": 11.4,\n                \"feelslike_f\": 52.4,\n                \"vis_km\": 8,\n                \"vis_miles\": 4,\n                \"uv\": 1,\n                \"gust_mph\": 4.7,\n                \"gust_kph\": 7.6\n            }\n        },\n        {\n            \"location\": {\n                \"name\": \"Syangja\",\n                \"region\": \"\",\n                \"country\": \"Nepal\",\n                \"lat\": 28.08,\n                \"lon\": 83.87,\n                \"tz_id\": \"Asia/Kathmandu\",\n                \"localtime_epoch\": 1709052783,\n                \"localtime\": \"2024-02-27 22:38\"\n            },\n            \"current\": {\n                \"last_updated_epoch\": 1709052300,\n                \"last_updated\": \"2024-02-27 22:30\",\n                \"temp_c\": 12.7,\n                \"temp_f\": 54.9,\n                \"is_day\": 0,\n                \"condition\": {\n                    \"text\": \"Clear \",\n                    \"icon\": \"//cdn.weatherapi.com/weather/64x64/night/113.png\",\n                    \"code\": 1000\n                },\n                \"wind_mph\": 6.7,\n                \"wind_kph\": 10.8,\n                \"wind_degree\": 352,\n                \"wind_dir\": \"N\",\n                \"pressure_mb\": 1015,\n                \"pressure_in\": 29.99,\n                \"precip_mm\": 0,\n                \"precip_in\": 0,\n                \"humidity\": 28,\n                \"cloud\": 13,\n                \"feelslike_c\": 11.8,\n                \"feelslike_f\": 53.2,\n                \"vis_km\": 10,\n                \"vis_miles\": 6,\n                \"uv\": 1,\n                \"gust_mph\": 14.1,\n                \"gust_kph\": 22.7\n            }\n        }\n    ]\n}"
 						}
 					]
 				},
@@ -1341,15 +2259,15 @@
 								},
 								{
 									"key": "Content-Length",
-									"value": "231"
+									"value": "490"
 								},
 								{
 									"key": "ETag",
-									"value": "W/\"e7-mKJ6MWdjDIwNu/FEb+eYxmk9kvA\""
+									"value": "W/\"1ea-quOud5UbYXnfGSjPWGLIagQJs00\""
 								},
 								{
 									"key": "Date",
-									"value": "Mon, 26 Feb 2024 19:32:59 GMT"
+									"value": "Tue, 27 Feb 2024 16:51:02 GMT"
 								},
 								{
 									"key": "Connection",
@@ -1361,11 +2279,103 @@
 								}
 							],
 							"cookie": [],
-							"body": "{\n    \"success\": true,\n    \"message\": \"Recent searches retrieved successfully.\",\n    \"data\": [\n        {\n            \"id\": 4,\n            \"cityId\": 3,\n            \"city\": {\n                \"name\": \"Banepa\",\n                \"latitude\": 0,\n                \"longitude\": 0\n            }\n        },\n        {\n            \"id\": 3,\n            \"cityId\": 1,\n            \"city\": {\n                \"name\": \"Bhaktapur\",\n                \"latitude\": 27.67,\n                \"longitude\": 85.4\n            }\n        }\n    ]\n}"
+							"body": "{\n    \"success\": true,\n    \"message\": \"Recent searches of city retrieved successfully.\",\n    \"data\": [\n        {\n            \"id\": 2,\n            \"cityId\": 2,\n            \"city\": {\n                \"name\": \"Banepa\",\n                \"latitude\": 27.67,\n                \"longitude\": 85.5\n            }\n        },\n        {\n            \"id\": 5,\n            \"cityId\": 5,\n            \"city\": {\n                \"name\": \"Syangja\",\n                \"latitude\": 28.08,\n                \"longitude\": 83.87\n            }\n        },\n        {\n            \"id\": 4,\n            \"cityId\": 4,\n            \"city\": {\n                \"name\": \"Dolakha\",\n                \"latitude\": 27.68,\n                \"longitude\": 86.07\n            }\n        },\n        {\n            \"id\": 3,\n            \"cityId\": 3,\n            \"city\": {\n                \"name\": \"Dolalghat\",\n                \"latitude\": 27.65,\n                \"longitude\": 85.7\n            }\n        },\n        {\n            \"id\": 1,\n            \"cityId\": 1,\n            \"city\": {\n                \"name\": \"Bhaktapur\",\n                \"latitude\": 27.67,\n                \"longitude\": 85.4\n            }\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "Get 5 recent searched cities' weather of user",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/api/v1/weather/recent-weather",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"weather",
+								"recent-weather"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get 5 recent searched cities' weather of user",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3000/api/v1/weather/recent-weather",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"v1",
+										"weather",
+										"recent-weather"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "http://localhost:3001"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "3326"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"cfe-p0vX5TNGyZHH1j7xXl17dmaog2Q\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 27 Feb 2024 16:51:31 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"message\": \"Recent searches retrieved successfully.\",\n    \"data\": [\n        {\n            \"location\": {\n                \"name\": \"Banepa\",\n                \"region\": \"\",\n                \"country\": \"Nepal\",\n                \"lat\": 27.63,\n                \"lon\": 85.52,\n                \"tz_id\": \"Asia/Kathmandu\",\n                \"localtime_epoch\": 1709052660,\n                \"localtime\": \"2024-02-27 22:36\"\n            },\n            \"current\": {\n                \"last_updated_epoch\": 1709052300,\n                \"last_updated\": \"2024-02-27 22:30\",\n                \"temp_c\": 11,\n                \"temp_f\": 51.8,\n                \"is_day\": 0,\n                \"condition\": {\n                    \"text\": \"Partly cloudy\",\n                    \"icon\": \"//cdn.weatherapi.com/weather/64x64/night/116.png\",\n                    \"code\": 1003\n                },\n                \"wind_mph\": 2.2,\n                \"wind_kph\": 3.6,\n                \"wind_degree\": 343,\n                \"wind_dir\": \"NNW\",\n                \"pressure_mb\": 1019,\n                \"pressure_in\": 30.09,\n                \"precip_mm\": 0,\n                \"precip_in\": 0,\n                \"humidity\": 58,\n                \"cloud\": 25,\n                \"feelslike_c\": 11.4,\n                \"feelslike_f\": 52.4,\n                \"vis_km\": 8,\n                \"vis_miles\": 4,\n                \"uv\": 1,\n                \"gust_mph\": 4.7,\n                \"gust_kph\": 7.6\n            }\n        },\n        {\n            \"location\": {\n                \"name\": \"Syangja\",\n                \"region\": \"\",\n                \"country\": \"Nepal\",\n                \"lat\": 28.08,\n                \"lon\": 83.87,\n                \"tz_id\": \"Asia/Kathmandu\",\n                \"localtime_epoch\": 1709052563,\n                \"localtime\": \"2024-02-27 22:34\"\n            },\n            \"current\": {\n                \"last_updated_epoch\": 1709052300,\n                \"last_updated\": \"2024-02-27 22:30\",\n                \"temp_c\": 12.7,\n                \"temp_f\": 54.9,\n                \"is_day\": 0,\n                \"condition\": {\n                    \"text\": \"Clear \",\n                    \"icon\": \"//cdn.weatherapi.com/weather/64x64/night/113.png\",\n                    \"code\": 1000\n                },\n                \"wind_mph\": 6.7,\n                \"wind_kph\": 10.8,\n                \"wind_degree\": 352,\n                \"wind_dir\": \"N\",\n                \"pressure_mb\": 1015,\n                \"pressure_in\": 29.99,\n                \"precip_mm\": 0,\n                \"precip_in\": 0,\n                \"humidity\": 28,\n                \"cloud\": 13,\n                \"feelslike_c\": 11.8,\n                \"feelslike_f\": 53.2,\n                \"vis_km\": 10,\n                \"vis_miles\": 6,\n                \"uv\": 1,\n                \"gust_mph\": 14.1,\n                \"gust_kph\": 22.7\n            }\n        },\n        {\n            \"location\": {\n                \"name\": \"Dolakha\",\n                \"region\": \"\",\n                \"country\": \"Nepal\",\n                \"lat\": 27.68,\n                \"lon\": 86.07,\n                \"tz_id\": \"Asia/Kathmandu\",\n                \"localtime_epoch\": 1709052528,\n                \"localtime\": \"2024-02-27 22:33\"\n            },\n            \"current\": {\n                \"last_updated_epoch\": 1709052300,\n                \"last_updated\": \"2024-02-27 22:30\",\n                \"temp_c\": 11,\n                \"temp_f\": 51.8,\n                \"is_day\": 0,\n                \"condition\": {\n                    \"text\": \"Partly cloudy\",\n                    \"icon\": \"//cdn.weatherapi.com/weather/64x64/night/116.png\",\n                    \"code\": 1003\n                },\n                \"wind_mph\": 2.2,\n                \"wind_kph\": 3.6,\n                \"wind_degree\": 31,\n                \"wind_dir\": \"NNE\",\n                \"pressure_mb\": 1019,\n                \"pressure_in\": 30.09,\n                \"precip_mm\": 0,\n                \"precip_in\": 0,\n                \"humidity\": 58,\n                \"cloud\": 25,\n                \"feelslike_c\": 9.8,\n                \"feelslike_f\": 49.7,\n                \"vis_km\": 8,\n                \"vis_miles\": 4,\n                \"uv\": 1,\n                \"gust_mph\": 13.2,\n                \"gust_kph\": 21.2\n            }\n        },\n        {\n            \"location\": {\n                \"name\": \"Dolalghat\",\n                \"region\": \"\",\n                \"country\": \"Nepal\",\n                \"lat\": 27.65,\n                \"lon\": 85.7,\n                \"tz_id\": \"Asia/Kathmandu\",\n                \"localtime_epoch\": 1709052524,\n                \"localtime\": \"2024-02-27 22:33\"\n            },\n            \"current\": {\n                \"last_updated_epoch\": 1709052300,\n                \"last_updated\": \"2024-02-27 22:30\",\n                \"temp_c\": 11,\n                \"temp_f\": 51.8,\n                \"is_day\": 0,\n                \"condition\": {\n                    \"text\": \"Partly cloudy\",\n                    \"icon\": \"//cdn.weatherapi.com/weather/64x64/night/116.png\",\n                    \"code\": 1003\n                },\n                \"wind_mph\": 2.2,\n                \"wind_kph\": 3.6,\n                \"wind_degree\": 343,\n                \"wind_dir\": \"NNW\",\n                \"pressure_mb\": 1019,\n                \"pressure_in\": 30.09,\n                \"precip_mm\": 0,\n                \"precip_in\": 0,\n                \"humidity\": 58,\n                \"cloud\": 25,\n                \"feelslike_c\": 11.4,\n                \"feelslike_f\": 52.4,\n                \"vis_km\": 8,\n                \"vis_miles\": 4,\n                \"uv\": 1,\n                \"gust_mph\": 4.7,\n                \"gust_kph\": 7.6\n            }\n        },\n        {\n            \"location\": {\n                \"name\": \"Bhaktapur\",\n                \"region\": \"\",\n                \"country\": \"Nepal\",\n                \"lat\": 27.67,\n                \"lon\": 85.42,\n                \"tz_id\": \"Asia/Kathmandu\",\n                \"localtime_epoch\": 1709052616,\n                \"localtime\": \"2024-02-27 22:35\"\n            },\n            \"current\": {\n                \"last_updated_epoch\": 1709052300,\n                \"last_updated\": \"2024-02-27 22:30\",\n                \"temp_c\": 11,\n                \"temp_f\": 51.8,\n                \"is_day\": 0,\n                \"condition\": {\n                    \"text\": \"Partly cloudy\",\n                    \"icon\": \"//cdn.weatherapi.com/weather/64x64/night/116.png\",\n                    \"code\": 1003\n                },\n                \"wind_mph\": 2.2,\n                \"wind_kph\": 3.6,\n                \"wind_degree\": 343,\n                \"wind_dir\": \"NNW\",\n                \"pressure_mb\": 1019,\n                \"pressure_in\": 30.09,\n                \"precip_mm\": 0,\n                \"precip_in\": 0,\n                \"humidity\": 58,\n                \"cloud\": 25,\n                \"feelslike_c\": 11.4,\n                \"feelslike_f\": 52.4,\n                \"vis_km\": 8,\n                \"vis_miles\": 4,\n                \"uv\": 1,\n                \"gust_mph\": 4.7,\n                \"gust_kph\": 7.6\n            }\n        }\n    ]\n}"
 						}
 					]
 				}
-			]
+			],
+			"description": "This folder contains all the APIs concerning the weather.\n\n- Get weather of current user's location saved in database.\n    \n- Search for weather:\n    \n    - Search for weather using city name.\n        \n    - Search for weather using latitude and longitude.\n        \n- Add city to user's favorites list.\n    \n- Favorite Cities:\n    \n    - Get the authorized user's favorite cities list.\n        \n    - Get the weather of authorized user's favorite cities.\n        \n- 5 Recent Searched Cities:\n    \n    - Get the 5 recent searched cities list of authorized user.\n        \n    - Get the weather of the 5 recent cities of authorized user."
 		},
 		{
 			"name": "Api Home",
