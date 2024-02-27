@@ -55,9 +55,4 @@ interface FavoriteCity {
     city: City
 }
 
-export {
-    City,
-    FavoriteCity,
-    RecentSearch,
-    WeatherApiResponse
-}
+export { City, FavoriteCity, RecentSearch, WeatherApiResponse }
