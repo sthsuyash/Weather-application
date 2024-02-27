@@ -13,16 +13,16 @@ import {
  * Gets the weather data for the current user.
  * @param {Request} req - The Express request object.
  * @param {Response} res - The Express response object.
- * @returns {Promise<void>}
+ * @returns {Promise<void>} - A promise that resolves once the weather data is retrieved.
  */
 export const getUserWeather = async (
     req: Request,
     res: Response
 ): Promise<void> => {
     try {
-        const weather: WeatherApiResponse = await WeatherService.getWeather(
-            req.session?.userId ?? 0
-        )
+        const userId = req.session?.userId ?? 0
+        const weather: WeatherApiResponse =
+            await WeatherService.getWeather(userId)
 
         res.json(
             ApiResponse.success<WeatherApiResponse>(
@@ -41,7 +41,7 @@ export const getUserWeather = async (
  * Searches for weather data based on the provided query parameters.
  * @param {Request} req - The Express request object.
  * @param {Response} res - The Express response object.
- * @returns {Promise<void>}
+ * @returns {Promise<void>} - A promise that resolves once the weather data is retrieved.
  */
 export const searchWeather = async (
     req: Request,
@@ -60,6 +60,7 @@ export const searchWeather = async (
         const queryParameters = q
             ? { q: q as string }
             : { lat: lat as unknown as number, lon: lon as unknown as number }
+
         const searchResult: WeatherApiResponse =
             await WeatherService.searchWeather(queryParameters, userId)
 
@@ -80,21 +81,21 @@ export const searchWeather = async (
  * Adds a city to the user's favorites.
  * @param {Request} req - The Express request object.
  * @param {Response} res - The Express response object.
- * @returns {Promise<void>}
- * @throws {Error} - If the city information is not provided.
+ * @returns {Promise<void>} - A promise that resolves once the city is added to the user's favorites.
  */
 export const addToFavorites = async (
     req: Request,
     res: Response
 ): Promise<void> => {
     try {
-        let { name, latitude, longitude } = req.body
+        const { name } = req.body
+        let { latitude, longitude } = req.body
 
         // change the latitude and longitude to numbers
         latitude = Number(latitude)
         longitude = Number(longitude)
 
-        if (!name || !latitude || !longitude) {
+        if (!name && !latitude && !longitude) {
             throw new Error('City information is required.')
         }
 
@@ -119,9 +120,7 @@ export const addToFavorites = async (
  * Gets the favorite cities for the current user.
  * @param {Request} req - The Express request object.
  * @param {Response} res - The Express response object.
- * @returns {Promise<void>}
- * @throws {Error} - If an error occurs while fetching favorite cities.
- * @throws {Error} - If the user ID is not found in the session.
+ * @returns {Promise<void>} - A promise that resolves once the favorite cities are retrieved.
  */
 export const getFavoriteCities = async (
     req: Request,
@@ -131,6 +130,7 @@ export const getFavoriteCities = async (
         const userId = req.session.userId ?? 0
         const favoriteCities: FavoriteCity[] =
             await WeatherService.getFavoriteCities(userId)
+
         res.json(
             ApiResponse.success<FavoriteCity[]>(
                 favoriteCities,
@@ -145,10 +145,36 @@ export const getFavoriteCities = async (
 }
 
 /**
+ * Gets the weather for user's favorite cities.
+ * @param {Request} req - The Express request object.
+ * @param {Response} res - The Express response object.
+ * @returns {Promise<void>} - A promise that resolves once the favorite cities weather is retrieved.
+ */
+export const getFavoriteCitiesWeather = async (
+    req: Request,
+    res: Response
+): Promise<void> => {
+    try {
+        const userId = req.session.userId ?? 0
+        const favoriteCities =
+            await WeatherService.getFavoriteCitiesWeather(userId)
+
+        res.json(
+            ApiResponse.success<WeatherApiResponse[]>(
+                favoriteCities,
+                'Favorite cities weather retrieved successfully.'
+            )
+        )
+    } catch (error: any) {
+        res.status(500).json(ApiResponse.error(error.message))
+    }
+}
+
+/**
  * Gets the recent searches for the current user.
  * @param {Request} req - The Express request object.
  * @param {Response} res - The Express response object.
- * @returns {Promise<void>}
+ * @returns {Promise<void>} - A promise that resolves once the recent searches are retrieved.
  */
 export const getRecentSearches = async (
     req: Request,
@@ -161,12 +187,36 @@ export const getRecentSearches = async (
         res.json(
             ApiResponse.success<RecentSearch[]>(
                 recentSearches,
+                'Recent searches of city retrieved successfully.'
+            )
+        )
+    } catch (error: any) {
+        res.status(500).json(ApiResponse.error(error.message))
+    }
+}
+
+/**
+ * Gets the weather for user's recent searches.
+ * @param {Request} req  - The Express request object.
+ * @param {Response} res - The Express response object.
+ * @returns {Promise<void>} - A promise that resolves once the recent searches weather is retrieved.
+ */
+export const getRecentSearchesWeather = async (
+    req: Request,
+    res: Response
+): Promise<void> => {
+    try {
+        const userId = req.session.userId ?? 0
+        const recentSearchesWeather =
+            await WeatherService.getRecentSearchesWeather(userId)
+
+        res.json(
+            ApiResponse.success<WeatherApiResponse[]>(
+                recentSearchesWeather,
                 'Recent searches retrieved successfully.'
             )
         )
     } catch (error: any) {
-        res.status(500).json(
-            ApiResponse.error('Error fetching recent searches.', error.message)
-        )
+        res.status(500).json(ApiResponse.error(error.message))
     }
 }

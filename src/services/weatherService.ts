@@ -2,9 +2,10 @@ import axios from 'axios'
 import {
     City,
     FavoriteCity,
-    WeatherApiResponse,
-    RecentSearch
+    RecentSearch,
+    WeatherApiResponse
 } from '../types/types'
+
 import prisma from '../config/prisma'
 import config from '../config'
 
@@ -15,7 +16,7 @@ const WEATHER_URL = `http://api.weatherapi.com/v1/current.json?key=${config.weat
  */
 class WeatherService {
     /**
-     * Gets the weather data for a user.
+     * Gets the weather data for the current user.
      * @param {number} userId - The user ID.
      * @returns {Promise<WeatherApiResponse>} - The weather data.
      * @throws {Error} - If an error occurs while fetching weather data.
@@ -62,14 +63,13 @@ class WeatherService {
             lat?: number
             lon?: number
         },
-        userId: number
+        userId: number,
+        addToRecentSearch = true
     ): Promise<WeatherApiResponse> {
         try {
             if (
-                !(
-                    query.q ||
-                    (query.lat !== undefined && query.lon !== undefined)
-                )
+                !query.q &&
+                (query.lat === undefined || query.lon === undefined)
             ) {
                 throw new Error(
                     'Either "q" (city name) or "lat" and "lon" (latitude and longitude) must be provided'
@@ -87,43 +87,66 @@ class WeatherService {
                 }
             })
 
-            // create the city if it doesn't exist
-            const existingCity = await prisma.city.findFirst({
-                where: {
-                    name: query.q
-                }
-            })
+            /*** adding city data to recent searches ***/
 
-            let newCreatedCity
-
-            if (!existingCity) {
-                await prisma.city.create({
-                    data: {
-                        name: query.q ?? '',
-                        latitude: query.lat ?? 0,
-                        longitude: query.lon ?? 0
-                    }
-                })
-                // get the city from the database
-                newCreatedCity = await prisma.city.findFirst({
-                    where: {
-                        name: query.q
-                    }
-                })
+            // if lat and lon are provided, convert them to numbers
+            if (query.lat && query.lon) {
+                query.lat = +query.lat
+                query.lon = +query.lon
             }
 
-            // create the search record
-            await prisma.weatherSearch.create({
-                data: {
-                    userId: userId,
-                    cityId: existingCity?.id ?? newCreatedCity?.id ?? 0
+            if (addToRecentSearch) {
+                let city
+                const queryWhereClause = query.q
+                    ? { name: query.q }
+                    : { latitude: query.lat, longitude: query.lon }
+
+                // Find the city
+                city = await prisma.city.findFirst({
+                    where: queryWhereClause
+                })
+
+                if (!city) {
+                    city = await prisma.city.create({
+                        data: {
+                            name: response.data.location.name,
+                            latitude: response.data.location.lat,
+                            longitude: response.data.location.lon
+                        }
+                    })
                 }
-            })
+
+                // Check if the search record already exists for the user and city
+                const existingSearchRecord =
+                    await prisma.weatherSearch.findFirst({
+                        where: {
+                            userId: userId,
+                            cityId: city.id
+                        }
+                    })
+
+                if (existingSearchRecord) {
+                    // Update the timestamp if the search record already exists
+                    await prisma.weatherSearch.update({
+                        where: { id: existingSearchRecord.id },
+                        data: { timestamp: new Date() }
+                    })
+                } else {
+                    // Create the search record if it doesn't exist
+                    await prisma.weatherSearch.create({
+                        data: {
+                            userId: userId,
+                            cityId: city.id
+                        }
+                    })
+                }
+            }
 
             const searchResult: WeatherApiResponse = response.data
             return searchResult
         } catch (error: any) {
-            throw new Error(`Error searching weather data: ${error.message}`)
+            console.error(error.message)
+            throw new Error(`Error searching weather data.`)
         }
     }
 
@@ -132,7 +155,9 @@ class WeatherService {
      * @param {City} city - The city data to be added.
      * @param {number} userId - The user ID.
      * @returns {Promise<FavoriteCity>} - The added city.
-     * @throws {Error} - If an error occurs while adding the city to favorites.
+     * @throws {Error} - If the user is not found.
+     * @throws {Error} - If the city information is missing.
+     * @throws {Error} - If the city already exists in the user's favorites.
      */
     static async addToFavorites(city: City, userId: number): Promise<void> {
         try {
@@ -150,30 +175,29 @@ class WeatherService {
                 throw new Error('City information is required.')
             }
 
-            // first create the city if it doesn't exist
+            // find the city in the database
             const existingCity = await prisma.city.findFirst({
                 where: {
                     name: city.name
                 }
             })
 
+            // if the city already exists in the user's favorites, return
+            const existingFavorite = await prisma.favoriteCity.findFirst({
+                where: {
+                    userId: userId,
+                    cityId: existingCity?.id
+                }
+            })
+
+            if (existingFavorite) {
+                throw new Error('City already exists in favorites.')
+            }
+
             // if the city doesn't exist,
             // create it and add it to the user's favorites
             if (!existingCity) {
-                const newCity = await prisma.city.create({
-                    data: {
-                        name: city.name,
-                        latitude: city.latitude,
-                        longitude: city.longitude
-                    }
-                })
-
-                await prisma.favoriteCity.create({
-                    data: {
-                        userId: userId,
-                        cityId: newCity.id
-                    }
-                })
+                throw new Error('City not found')
             } else {
                 // if the city exists, add it to the user's favorites
                 await prisma.favoriteCity.create({
@@ -238,6 +262,40 @@ class WeatherService {
     }
 
     /**
+     * Gets the favorite cities weather for a user.
+     * @param {number} userId - The user ID.
+     * @returns {Promise<WeatherApiResponse[]>} - The favorite cities weather.
+     * @throws {Error} - If an error occurs while fetching favorite cities weather.
+     */
+    static async getFavoriteCitiesWeather(
+        userId: number
+    ): Promise<WeatherApiResponse[]> {
+        try {
+            const favoriteCities =
+                await WeatherService.getFavoriteCities(userId)
+
+            const favoriteCitiesWeather: WeatherApiResponse[] = []
+
+            for (const cities of favoriteCities) {
+                const weatherData = await WeatherService.searchWeather(
+                    {
+                        q: cities.city.name
+                    },
+                    userId,
+                    false
+                )
+                favoriteCitiesWeather.push(weatherData)
+            }
+
+            return favoriteCitiesWeather
+        } catch (error: any) {
+            throw new Error(
+                `Error fetching favorite cities weather data: ${error.message}`
+            )
+        }
+    }
+
+    /**
      * Gets the recent searches for a user.
      * @param {number} userId - The user ID.
      * @returns {Promise<RecentSearch[]>} - The recent searches.
@@ -287,6 +345,40 @@ class WeatherService {
             return formattedRecentSearches
         } catch (error: any) {
             throw new Error(`Error fetching recent searches: ${error.message}`)
+        }
+    }
+
+    /**
+     * Gets the recent search weather for a user.
+     * @param {number} userId - The user ID.
+     * @returns {Promise<RecentSearch[]>} - The recent searches.
+     * @throws {Error} - If an error occurs while fetching recent searches.
+     */
+    static async getRecentSearchesWeather(
+        userId: number
+    ): Promise<WeatherApiResponse[]> {
+        try {
+            const recentSearches =
+                await WeatherService.getRecentSearches(userId)
+
+            const recentSearchesWeather: WeatherApiResponse[] = []
+
+            for (const search of recentSearches) {
+                const weatherData = await WeatherService.searchWeather(
+                    {
+                        q: search.city.name
+                    },
+                    userId,
+                    false
+                )
+                recentSearchesWeather.push(weatherData)
+            }
+
+            return recentSearchesWeather
+        } catch (error: any) {
+            throw new Error(
+                `Error fetching recent searches weather data: ${error.message}`
+            )
         }
     }
 }
