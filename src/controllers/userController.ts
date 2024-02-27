@@ -172,16 +172,24 @@ export const deleteUserProfile = async (
     try {
         const userId = req.session.userId ?? 0
 
-        req.session.destroy((error) => {
-            if (error) {
-                console.error('Error destroying session:', error)
-                res.status(500).json(ApiResponse.error(error.message))
-            } else {
-                res.clearCookie('connect.sid')
-            }
+        // Destroy the session and clear the cookie
+        await new Promise<void>((resolve, reject) => {
+            req.session.destroy((error) => {
+                if (error) {
+                    console.error('Error destroying session:', error)
+                    reject(error)
+                } else {
+                    // Check if headers have already been sent
+                    if (!res.headersSent) {
+                        res.clearCookie('connect.sid')
+                    }
+                    resolve()
+                }
+            })
         })
 
-        await userService.deleteUserById(userId)
+        // After destroying the session, delete the user profile
+        await userService.deleteUserProfile(userId)
 
         res.json(
             ApiResponse.success<null>(

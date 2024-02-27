@@ -169,13 +169,13 @@ class UserService {
     }
 
     /**
-     * Deletes a user by their ID.
+     * Deletes a user by their ID in session.
      *
      * @param {number} userId - The ID of the user to delete.
      * @returns {Promise<void>} - A promise that resolves once the user is successfully deleted.
      * @throws {Error} - Throws an error if the user is not found.
      */
-    async deleteUserById(userId: number): Promise<void> {
+    async deleteUserProfile(userId: number): Promise<void> {
         const user = await prisma.user.delete({
             where: { id: userId }
         })
