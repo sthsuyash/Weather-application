@@ -13,7 +13,7 @@ class UserService {
      * @returns {Promise<void>} - A promise that resolves once the user is successfully registered.
      * @throws {Error} - Throws an error if the email already exists in the database.
      */
-    async registerUser(userData: any): Promise<void> {
+    static async registerUser(userData: any): Promise<void> {
         const { email, password, country, city, state, latitude, longitude } =
             userData
 
@@ -49,7 +49,7 @@ class UserService {
      * @throws {Error} - Throws an error if the user is not found.
      * @throws {Error} - Throws an error if the password is incorrect.
      */
-    async loginUser(userData: any): Promise<User> {
+    static async loginUser(userData: any): Promise<User> {
         const { email, password } = userData
 
         // Retrieve the user from the database by email
@@ -79,7 +79,7 @@ class UserService {
      * @returns {Promise<User | null>} - A promise that resolves with the user's information, or null if the user is not found.
      * @throws {Error} - Throws an error if the user is not found.
      */
-    async getUserProfile(userId: number): Promise<User | null> {
+    static async getUserProfile(userId: number): Promise<User | null> {
         const user = await prisma.user.findUnique({
             where: { id: userId }
         })
@@ -102,7 +102,10 @@ class UserService {
      * @throws {Error} - Throws an error if the user is not found.
      * @throws {Error} - Throws an error if the email already exists in the database.
      */
-    async updateUserProfile(userId: number, userData: any): Promise<void> {
+    static async updateUserProfile(
+        userId: number,
+        userData: any
+    ): Promise<void> {
         // Check if the email already exists in the database
         if (userData.email) {
             const existingUser = await prisma.user.findUnique({
@@ -137,7 +140,7 @@ class UserService {
      * @throws {Error} - Throws an error if the user is not found.
      * @throws {Error} - Throws an error if the old password is incorrect.
      */
-    async updateUserPassword(
+    static async updateUserPassword(
         userId: number,
         oldPassword: string,
         newPassword: string
@@ -175,7 +178,7 @@ class UserService {
      * @returns {Promise<void>} - A promise that resolves once the user is successfully deleted.
      * @throws {Error} - Throws an error if the user is not found.
      */
-    async deleteUserProfile(userId: number): Promise<void> {
+    static async deleteUserProfile(userId: number): Promise<void> {
         const user = await prisma.user.delete({
             where: { id: userId }
         })
@@ -186,5 +189,4 @@ class UserService {
     }
 }
 
-const userService = new UserService()
-export default userService
+export default UserService
